@@ -1,0 +1,267 @@
+:root {
+    --primary: #4d76fd;
+    --dark: #1a1a2e;
+    --light: #f8f9fa;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+}
+.form-container form {
+    padding: 40px;
+}
+
+.form-header {
+    background: var(--primary);
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+}
+.form-header h1 {
+    font-size: 22px;
+}
+
+.form-header p {
+    font-size: 16px;
+}
+
+.form-container input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+    font-size: 15px;
+    line-height: 1.3;
+    color: #1f2937;                  /* основной цвет текста */
+    background: #ffffff;             /* фон */
+    border: 1px solid #e6eef8;       /* тонкая рамка */
+    border-radius: 10px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    transition: border-color .18s ease, box-shadow .18s ease, transform .12s ease;
+    outline: none;
+}
+
+.form-container input,
+.form-container textarea {
+    margin-bottom: 20px;
+}
+
+    /* hover — лёгкое выделение */
+.form-container input:hover {
+    border-color: #cfe6ff;
+}
+
+/* focus — яркое выделение и тень */
+.form-container input:focus {
+    border-color: #3b82f6; /* синий */
+    box-shadow: 0 6px 20px rgba(59,130,246,0.12);
+    transform: translateY(-1px);
+}
+
+/* placeholder — мягкий нейтральный цвет */
+.form-container input::placeholder {
+    color: #9aa6b2;
+    opacity: 1;
+}
+.form-container input:-ms-input-placeholder { color: #9aa6b2; }
+.form-container input::-ms-input-placeholder { color: #9aa6b2; }
+
+/* disabled / readonly */
+.form-container input:disabled,
+.form-container input[readonly] {
+    background: #f5f7fa;
+    border-color: #e9eef3;
+    color: #9aa6b2;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* маленькие inputs (например в строке) */
+.form-container input.input-sm {
+    padding: 8px 10px;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+/* ошибки */
+.form-container input.is-invalid {
+    border-color: #ff6b6b;
+    box-shadow: 0 6px 18px rgba(255,107,107,0.10);
+}
+
+/* если есть иконка влево — добавляем отступ */
+.form-container .has-icon input {
+    padding-left: 40px;
+}
+
+/* адаптивно: на очень маленьких экранах чуть меньше радиус/паддинг */
+@media (max-width: 420px) {
+    .form-container input {
+        padding: 10px 12px;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+}
+
+/* TEXTAREA */
+.form-container textarea {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 140px;
+    padding: 12px 14px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #1f2937;
+    background: #ffffff;
+    border: 1px solid #e6eef8;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    transition: border-color .18s ease, box-shadow .18s ease, transform .12s ease;
+    outline: none;
+    resize: vertical; /* allows only vertical resize */
+    max-height: 400px;
+    overflow: auto;
+}
+
+/* hover / focus для textarea */
+.form-container textarea:hover {
+    border-color: #cfe6ff;
+}
+.form-container textarea:focus,
+.form-container textarea:focus-visible {
+    border-color: #3b82f6;
+    box-shadow: 0 8px 24px rgba(59,130,246,0.10);
+    transform: translateY(-1px);
+}
+
+/* placeholder */
+.form-container textarea::placeholder {
+    color: #9aa6b2;
+    opacity: 1;
+}
+
+/* маленький вариант */
+.form-container textarea.textarea-sm {
+    min-height: 100px;
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+/* textarea с ошибкой */
+.form-container textarea.is-invalid {
+    border-color: #ff6b6b;
+    box-shadow: 0 6px 18px rgba(255,107,107,0.10);
+}
+
+/* BUTTON / SUBMIT */
+.form-container input[type="submit"],
+.form-container button[type="submit"] {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(180deg, #3b82f6 0%, #1e63d6 100%); /* градиент */
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+    box-shadow: 0 8px 20px rgba(30,99,214,0.14);
+    text-align: center;
+    text-decoration: none;
+}
+
+/* hover / active */
+.form-container input[type="submit"]:hover,
+.form-container button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(30,99,214,0.18);
+}
+.form-container input[type="submit"]:active,
+.form-container button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 14px rgba(30,99,214,0.12);
+}
+
+/* focus (клавиатура) */
+.form-container input[type="submit"]:focus,
+.form-container button[type="submit"]:focus,
+.form-container input[type="submit"]:focus-visible,
+.form-container button[type="submit"]:focus-visible {
+    outline: 3px solid rgba(59,130,246,0.18);
+    outline-offset: 2px;
+}
+
+/* disabled */
+.form-container input[type="submit"][disabled],
+.form-container button[type="submit"][disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    background: linear-gradient(180deg, #a8c8ff 0%, #8fb2ff 100%);
+}
+
+/* маленькая кнопка */
+.form-container .btn-sm,
+.form-container input[type="submit"].btn-sm,
+.form-container button[type="submit"].btn-sm {
+    width: auto;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+/* если рядом иконка в кнопке */
+.form-container button[type="submit"] .btn-icon,
+.form-container input[type="submit"] .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* адаптив */
+@media (max-width: 420px) {
+    .form-container textarea {
+        padding: 10px 12px;
+        border-radius: 8px;
+    }
+    .form-container input[type="submit"],
+    .form-container button[type="submit"] {
+        padding: 11px 14px;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+}
+
+.form-block-header {
+    margin-bottom: 20px;
+}
+
+.form-block-header h2 {
+    font-size: 18px !important;
+}

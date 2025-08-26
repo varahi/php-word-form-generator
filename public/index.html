@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор Договора</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+</head>
+<body>
+
+<div class="form-container">
+    <div class="form-header">
+        <h1>Генератор Договора</h1>
+    </div>
+
+    <form method="post" action="generate_doc.php" enctype="multipart/form-data">
+        <div class="form-block">
+            <div class="form-block-header">
+                <h2>Данные договора</h2>
+            </div>
+        </div>
+
+        <div>
+            <label>Номер договора:</label>
+            <input type="text" name="contract_number" required>
+        </div>
+
+        <div class="form-group">
+            <label for="contract_date">Дата договора</label>
+            <input type="text"
+                   name="contract_date"
+                   id="contract_date"
+                   class="form-control date-calendar date-picker flatpickr-input active"
+                   placeholder="дд.мм.гггг"
+                   value="" required>
+
+        </div>
+        <button type="submit">Создать документ</button>
+    </form>
+</div>
+
+<script src="js/main.js"></script>
+</body>
