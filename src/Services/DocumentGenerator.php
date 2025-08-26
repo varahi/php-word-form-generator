@@ -66,15 +66,4 @@ class DocumentGenerator
         exit;
     }
 
-    public function saveToFile(string $filepath): void
-    {
-        $tempFile = $this->generate();
-        rename($tempFile, $filepath);
-    }
-
-    public function getValues(): array
-    {
-        return $this->values;
-    }
-
 }
