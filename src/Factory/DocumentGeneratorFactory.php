@@ -4,6 +4,7 @@ namespace App\Factory;
 
 use App\Services\DocumentGenerator;
 use App\Requests\DocumentRequest;
+use App\Services\DateFormatter;
 
 class DocumentGeneratorFactory
 {
@@ -14,13 +15,31 @@ class DocumentGeneratorFactory
         $generator = new DocumentGenerator('data/template.docx');
 
         [$day, $month, $year] = explode('.', $request->get('contract_date'));
-        //self::debug($day);
+        [$customer_birthdate_day, $customer_birthdate_month, $customer_birthdate_year] = explode('.', $request->get('customer_birthdate'));
+        [$contract_duration_day, $contract_duration_month, $contract_duration_year] = explode('.', $request->get('contract_duration_date'));
+
+        //self::debug($customer_birthdate_day);
 
         $generator->setValues([
+            // Contract data
             'contract_number' => $request->get('contract_number'),
-            'day' => $request->get($day),
-            'month' => $request->get($month),
-            'year' => $request->get($year),
+            'day' => $day,
+            'month' => DateFormatter::russianMonth((int)$month),
+            'year' => $year,
+
+            'cdday' => $contract_duration_day,
+            'cdmonth' => DateFormatter::russianMonth((int)$contract_duration_month),
+            'cdyear' => $contract_duration_year,
+
+            // Customer data
+            'customer_fullname' => $request->get('customer_fullname'),
+            'cday' => $customer_birthdate_day,
+            'cmonth' => DateFormatter::russianMonth((int)$customer_birthdate_month),
+            'cyear' => $customer_birthdate_year,
+            'customer_passwport_number' => $request->get('customer_passwport_number'),
+            'customer_passport_issued_by' => $request->get('customer_passport_issued_by'),
+            'customer_registration_address' => $request->get('customer_registration_address'),
+            'customer_phone' => $request->get('customer_phone'),
         ]);
 
         $generator->setOutputFilename('contract_' . $request->get('contract_number') . '.docx');
@@ -34,5 +53,25 @@ class DocumentGeneratorFactory
         print_r($get);
         echo '<br>';
         exit();
+    }
+
+    private function getRussianMonth(int $monthNumber): string
+    {
+        $months = [
+            1 => 'Января',
+            2 => 'Февраля',
+            3 => 'Марта',
+            4 => 'Апреля',
+            5 => 'Мая',
+            6 => 'Июня',
+            7 => 'Июля',
+            8 => 'Августа',
+            9 => 'Сентября',
+            10 => 'Октября',
+            11 => 'Ноября',
+            12 => 'Декабря'
+        ];
+
+        return $months[$monthNumber] ?? '';
     }
 }
