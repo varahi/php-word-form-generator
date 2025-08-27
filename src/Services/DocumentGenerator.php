@@ -7,9 +7,9 @@ use Exception;
 
 class DocumentGenerator
 {
-    private string $templatePath;
-    private array $values;
-    private string $outputFilename;
+    private $templatePath;
+    private $values;
+    private $outputFilename;
 
     public function __construct(string $templatePath)
     {

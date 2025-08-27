@@ -12,7 +12,12 @@ class DocumentGeneratorFactory
     {
         $request = new DocumentRequest($postData);
 
-        $generator = new DocumentGenerator('data/template.docx');
+        if(empty($postData['template'])) {
+            header('Location: form.html');
+            exit;
+        }
+
+        $generator = new DocumentGenerator('data/' . $postData['template'] . '.docx');
 
         [$day, $month, $year] = explode('.', $request->get('contract_date'));
         [$customer_birthdate_day, $customer_birthdate_month, $customer_birthdate_year] = explode('.', $request->get('customer_birthdate'));

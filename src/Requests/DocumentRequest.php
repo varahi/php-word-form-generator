@@ -4,7 +4,7 @@ namespace App\Requests;
 
 class DocumentRequest
 {
-    private array $data;
+    private $data;
 
     public function __construct(array $postData)
     {
