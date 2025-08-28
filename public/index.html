@@ -21,13 +21,14 @@
         <div class="form-block">
             <div class="form-block-header">
                 <h2>Данные договора</h2>
+                <p>Все поля обязательны для заполнения</p>
             </div>
 
             <div class="form-group">
-                <label for="select">Выберите шаблон *:</label>
+                <label for="select">Выберите шаблон:</label>
                 <select class="form-select" id="select" style="margin-bottom: 15px;" name="template" required>
-                    <option value="">Выберите шаблон *</option>
-                    <option value="mind_body">Mind Body (групповые спортивные тренировки для взрослых)</option>
+                    <option value="">Выберите шаблон</option>
+                    <!-- <option value="mind_body">Mind Body (групповые спортивные тренировки для взрослых)</option> -->
                     <option value="abc">Обучение английскому языку детей дошкольного возраста</option>
                     <option value="abvgdeyka">АБВГДейка (подготовка к школе)</option>
                     <option value="arosmazka">Аромасказка</option>
@@ -55,7 +56,7 @@
 
             <div class="form-group">
                 <label>Номер договора:</label>
-                <input type="text" name="contract_number" class="form-control" >
+                <input type="text" name="contract_number" class="form-control" required>
             </div>
 
             <div class="form-group">
@@ -64,7 +65,7 @@
                        name="contract_date"
                        id="contract_date"
                        class="form-control date-calendar date-picker flatpickr-input active"
-                       placeholder="дд.мм.гггг" >
+                       placeholder="дд.мм.гггг" required>
             </div>
 
             <div class="form-group">
@@ -74,7 +75,7 @@
                        id="contract_start_date"
                        class="form-control date-calendar date-picker flatpickr-input active"
                        placeholder="дд.мм.гггг"
-                       value="" >
+                       value="" required>
             </div>
 
             <div class="form-group">
@@ -84,13 +85,14 @@
                        id="contract_end_date"
                        class="form-control date-calendar date-picker flatpickr-input active"
                        placeholder="дд.мм.гггг"
-                       value="" >
+                       value="" required>
             </div>
             <br /><hr />
 
             <div class="form-block">
                 <div class="form-block-header">
                     <h2>Данные ребенка</h2>
+                    <p>Все поля обязательны для заполнения</p>
                 </div>
                 <div class="form-group">
                     <label>Полное имя ребенка:</label>
@@ -98,13 +100,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="customer_birthdate">Дата рождения ребенка</label>
+                    <label for="customer_child_birthdate">Дата рождения ребенка</label>
                     <input type="text"
                            name="customer_child_birthdate"
                            id="customer_child_birthdate"
                            class="form-control date-calendar date-picker flatpickr-input active"
                            placeholder="дд.мм.гггг"
-                           value="" >
+                           value="" required>
                 </div>
             </div>
             <br /><hr />
@@ -112,12 +114,14 @@
             <div class="form-block">
                 <div class="form-block-header">
                     <h2>Данные клиента</h2>
+                    <p>Все поля обязательны для заполнения</p>
                 </div>
                 <div class="form-group">
                     <label>Полное имя клиента:</label>
-                    <input type="text" name="customer_fullname" >
+                    <input type="text" name="customer_fullname" required>
                 </div>
-                <div class="form-group">
+
+                <!-- <div class="form-group">
                     <label for="customer_birthdate">Дата рождения клиента</label>
                     <input type="text"
                            name="customer_birthdate"
@@ -125,22 +129,23 @@
                            class="form-control date-calendar date-picker flatpickr-input active"
                            placeholder="дд.мм.гггг"
                            value="" >
-                </div>
+                </div> -->
+
                 <div class="form-group">
                     <label>Серия и номер паспорта:</label>
-                    <input type="text" name="customer_passwport_number" >
+                    <input type="text" name="customer_passwport_number" required>
                 </div>
                 <div class="form-group">
                     <label>Кем и когда выдан:</label>
-                    <textarea name="customer_passport_issued_by" rows="4" ></textarea>
+                    <textarea name="customer_passport_issued_by" rows="4" required></textarea>
                 </div>
                 <div>
                     <label>Адрес регистрации:</label>
-                    <textarea name="customer_registration_address" rows="4" ></textarea>
+                    <textarea name="customer_registration_address" rows="4" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label>Телефон:</label>
-                    <input type="text" name="customer_phone" >
+                    <label>Телефон (необязательно):</label>
+                    <input type="text" name="customer_phone">
                 </div>
             </div>
         </div>

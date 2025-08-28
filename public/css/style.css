@@ -266,3 +266,6 @@ body {
     font-size: 22px !important;
     color: #dc3545;
 }
+.form-block-header p {
+    color: #dc3545;
+}

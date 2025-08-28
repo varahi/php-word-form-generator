@@ -1,4 +1,4 @@
-.env
+!.env
 .ddev
 composer.lock
 vendor/

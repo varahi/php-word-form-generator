@@ -13,9 +13,7 @@ class DocumentGeneratorFactory
 {
     public static function createContractGenerator(array $postData): DocumentGenerator
     {
-
-        // Инициализируем конфиг
-        EnvConfig::init();
+        EnvConfig::init(); // Инициализируем конфиг
 
         // Если включен тестовый режим и данные не переданы, используем тестовые
         if (EnvConfig::isTestMode()) {
@@ -37,7 +35,7 @@ class DocumentGeneratorFactory
         $generator = new DocumentGenerator('data/' . $postData['template'] . '.docx');
 
         [$day, $month, $year] = explode('.', $request->get('contract_date'));
-        [$customer_birthdate_day, $customer_birthdate_month, $customer_birthdate_year] = explode('.', $request->get('customer_birthdate'));
+        //[$customer_birthdate_day, $customer_birthdate_month, $customer_birthdate_year] = explode('.', $request->get('customer_birthdate'));
         [$contract_start_day, $contract_start_month, $contract_start_year] = explode('.', $request->get('contract_start_date'));
         [$contract_end_day, $contract_end_month, $contract_end_year] = explode('.', $request->get('contract_end_date'));
         [$customer_child_birthdate_day, $customer_child_birthdate_month, $customer_child_birthdate_year] =
@@ -64,13 +62,15 @@ class DocumentGeneratorFactory
 
             // Customer data
             'customer_fullname' => $request->get('customer_fullname'),
-            'cbday' => $customer_birthdate_day,
-            'cbmonth' => DateFormatter::russianMonth((int)$customer_birthdate_month),
-            'cbyear' => $customer_birthdate_year,
+            //'cbday' => $customer_birthdate_day,
+            //'cbmonth' => DateFormatter::russianMonth((int)$customer_birthdate_month),
+            //'cbyear' => $customer_birthdate_year,
+            //'customer_phone' => $request->get('customer_phone'),
+
             'customer_passwport_number' => $request->get('customer_passwport_number'),
             'customer_passport_issued_by' => $request->get('customer_passport_issued_by'),
             'customer_registration_address' => $request->get('customer_registration_address'),
-            'customer_phone' => $request->get('customer_phone'),
+            'customer_phone' => !empty($request->get('customer_phone')) ? trim($request->get('customer_phone')) : '',
 
             // Customer child data
             'customer_child_fullname' => $request->get('customer_child_fullname'),
