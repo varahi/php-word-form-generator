@@ -263,5 +263,6 @@ body {
 }
 
 .form-block-header h2 {
-    font-size: 18px !important;
+    font-size: 22px !important;
+    color: #dc3545;
 }
