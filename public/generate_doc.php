@@ -25,8 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fileName = $generator->getFileName();
 
         // Отправляем на email
-        $emailService = new EmailService();
-
         $subject = 'Сгенерирован документ: ' . ($_POST['contract_number'] ?? 'Без номера');
         $body = "Документ был сгенерирован через форму.\n\n";
         $body .= "Данные формы:\n";
@@ -37,7 +35,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        $success = $emailService->sendDocumentWithContent($fileContent, $fileName, $subject, $body);
+        $method = EnvConfig::getMailerMethod();
+        if ($method === 'native') {
+            $adminEmail = EnvConfig::getAdminEmail();
+            $emailService = new \App\Services\PhpMailService();
+            $success = $emailService->sendViaPhpMail($adminEmail, $subject, $body, $fileContent, $fileName);
+        } else {
+            $emailService = new EmailService();
+            $success = $emailService->sendDocumentWithContent($fileContent, $fileName, $subject, $body);
+        }
 
         if ($success) {
             // Показываем страницу успеха
