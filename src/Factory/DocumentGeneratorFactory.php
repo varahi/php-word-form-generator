@@ -28,7 +28,7 @@ class DocumentGeneratorFactory
         $request = new DocumentRequest($postData);
 
         if(empty($postData['template'])) {
-            header('Location: form.html');
+            header('Location: index.html');
             exit;
         }
 

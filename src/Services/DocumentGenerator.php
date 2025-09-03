@@ -66,4 +66,18 @@ class DocumentGenerator
         exit;
     }
 
+    public function getFileContent(): string
+    {
+        $tempFile = $this->generate();
+        $content = file_get_contents($tempFile);
+        unlink($tempFile);
+
+        return $content;
+    }
+
+    public function getFileName(): string
+    {
+        return $this->outputFilename;
+    }
+
 }

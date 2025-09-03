@@ -37,4 +37,14 @@ class EnvConfig
     {
         return self::get('TEST_CASE', 'test_case_1');
     }
+
+    public static function getMailerMethod(): string
+    {
+        return self::get('MAILER_METHOD', 'smtp');
+    }
+
+    public static function getAdminEmail(): string
+    {
+        return self::get('ADMIN_EMAIL');
+    }
 }
