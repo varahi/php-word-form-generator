@@ -32,12 +32,14 @@ class DocumentGeneratorFactory
             exit;
         }
 
+        $contract_end_date = EnvConfig::get('CONTRACT_END_DATE');
         $generator = new DocumentGenerator('data/' . $postData['template'] . '.docx');
 
         [$day, $month, $year] = explode('.', $request->get('contract_date'));
         //[$customer_birthdate_day, $customer_birthdate_month, $customer_birthdate_year] = explode('.', $request->get('customer_birthdate'));
         [$contract_start_day, $contract_start_month, $contract_start_year] = explode('.', $request->get('contract_start_date'));
-        [$contract_end_day, $contract_end_month, $contract_end_year] = explode('.', $request->get('contract_end_date'));
+        //[$contract_end_day, $contract_end_month, $contract_end_year] = explode('.', $request->get('contract_end_date'));
+        [$contract_end_day, $contract_end_month, $contract_end_year] = explode('.', $contract_end_date);
         [$customer_child_birthdate_day, $customer_child_birthdate_month, $customer_child_birthdate_year] =
             explode('.', $request->get('customer_child_birthdate'));
 
